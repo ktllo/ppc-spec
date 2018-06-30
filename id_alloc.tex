@@ -1,0 +1,95 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.725in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage[british]{babel}
+\usepackage[colorlinks]{hyperref}
+\title{Algorithm Identifier List}
+\author{Lo Kam Tao Leo\\leolo@leolo.org}
+\date{\today}
+\setcounter{tocdepth}{1}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\newcommand{\see}[1]{[\ref{#1}]}
+\begin{document}
+	\tableofcontents
+	\vspace{25.4mm}
+	\noindent
+	Copyright (c) 2018, LO Kam Tao Leo
+	All rights reserved.
+	
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+	\begin{itemize}
+		\item Redistributions of source code must retain the above copyright notice, this
+		list of conditions and the following disclaimer.
+		
+		\item Redistributions in binary form must reproduce the above copyright notice,
+		this list of conditions and the following disclaimer in the documentation
+		and/or other materials provided with the distribution.
+		
+		\item Neither the name of the copyright holder nor the names of its
+		contributors may be used to endorse or promote products derived from
+		this software without specific prior written permission.
+	\end{itemize}
+
+	
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS''
+	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+	IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+	DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+	FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+	DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+	SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+	OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	\section{Preface}
+	The key words ``MUST'', ``MUST NOT'', ``REQUIRED'', ``SHALL'', ``SHALL
+	NOT'', ``SHOULD'', ``SHOULD NOT'', ``RECOMMENDED'',  ``MAY'', and
+	``OPTIONAL'' in this document are to be interpreted as described in
+	RFC 2119.
+	\section{Hash algorithm}
+		\begin{tabular}{|lcr||c|c|}
+			\hline 
+			\multicolumn{3}{|c||}{Identifier} &  Algorithm name & Remarks \\\hline 
+			0000&-&fdff&\textit{Unallocated}&  \\\hline
+			fe00&-&feff&Implementation specific algorithm& \see{h:1}\\\hline
+			ff00&-&ffff&Reserved for future expansion&  \\\hline 
+		\end{tabular} 
+		\begin{enumerate}
+			\item \label{h:1}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
+		\end{enumerate}
+	\section{Encryption algorithm}
+		\begin{tabular}{|lcr||c|l|l|}
+			\hline 
+			\multicolumn{3}{|c||}{Identifier} & Cipher Type & Algorithm name & Remarks \\ 
+			\hline 
+			0000&-&4fff&  &\textit{Unallocated}&  \\\hline 
+			5000&&& BLOCK & Null cipher& \see{en:1} \\\hline 
+			5001&&& STREAM&Null cipher& \see{en:1} \\\hline  
+			5002&-&fdff&  &\textit{Unallocated}&  \\\hline 
+			fe00&-&frff&  &Implementation specific algorithm& \see{en:2} \\\hline 
+			ff00&-&ffff&  &Reserved for future expansion&  \\\hline
+		\end{tabular} 
+		\begin{enumerate}
+			\item \label{en:1}Null cipher is not recommended to be used as it does not actually encrypt the
+			data. Implementation SHOULD provide warning for using these cipher.
+			\item \label{en:2}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
+		\end{enumerate}
+	\section{Key derivation algorithm}
+		\begin{tabular}{|lcr||c|c|}
+			\hline 
+			\multicolumn{3}{|c||}{Identifier} &  Algorithm name & Remarks \\\hline 
+			0000&-&fdff&\textit{Unallocated}&  \\\hline
+			fe00&-&feff&Implementation specific algorithm& \see{kd:1}\\\hline
+			ff00&-&ffff&Reserved for future expansion&  \\\hline 
+		\end{tabular}
+		\begin{enumerate}
+			\item \label{kd:1}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
+		\end{enumerate}
+\end{document}
