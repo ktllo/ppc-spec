@@ -10,6 +10,7 @@
 \usepackage[colorlinks]{hyperref}
 \usepackage{array} % for defining a new column type
 \usepackage{varwidth} %for the varwidth minipage environment
+\usepackage{longtable}
 \title{Algorithm Identifier List}
 \author{Lo Kam Tao Leo\\leolo@leolo.org}
 \date{\today}
@@ -58,41 +59,41 @@
 	``OPTIONAL'' in this document are to be interpreted as described in
 	RFC 2119.
 	\section{Hash algorithm}
-		\begin{tabular}{|lcr||M|l|}
+		\begin{longtable}{|lcr||M|l|}
 			\hline 
-			\multicolumn{3}{|c||}{Identifier} &  Algorithm name & Remarks \\\hline 
+			\multicolumn{3}{|c||}{Identifier} &  Algorithm name & Remarks \\\hline \endhead
 			\hex{0000}&-&\hex{fdff}&\textit{Unallocated}&  \\\hline
 			\hex{fe00}&-&\hex{feff}&Implementation specific algorithm& \see{h:1}\\\hline
 			\hex{ff00}&-&\hex{ffff}&Reserved for future expansion&  \\\hline 
-		\end{tabular} 
+		\end{longtable} 
 		\begin{enumerate}
 			\item \label{h:1}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
 		\end{enumerate}
 	\section{Encryption algorithm}
-		\begin{tabular}{|lcr||c|M|l|}
+		\begin{longtable}{|lcr||c|M|l|}
 			\hline 
 			\multicolumn{3}{|c||}{Identifier} & Cipher Type & Algorithm name & Remarks \\ 
-			\hline 
+			\hline \endhead
 			\hex{0000}&-&\hex{4fff}&  &\textit{Unallocated}&  \\\hline 
 			\hex{5000}&&& BLOCK & Null cipher& \see{en:1} \\\hline 
 			\hex{5001}&&& STREAM&Null cipher& \see{en:1} \\\hline  
 			\hex{5002}&-&\hex{fdff}&  &\textit{Unallocated}&  \\\hline 
 			\hex{fe00}&-&\hex{feff}&  &Implementation specific algorithm& \see{en:2} \\\hline 
 			\hex{ff00}&-&\hex{ffff}&  &Reserved for future expansion&  \\\hline
-		\end{tabular} 
+		\end{longtable} 
 		\begin{enumerate}
 			\item \label{en:1}Null cipher is not recommended to be used as it does not actually encrypt the
 			data. Implementation SHOULD provide warning for using these cipher.
 			\item \label{en:2}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
 		\end{enumerate}
 	\section{Key derivation algorithm}
-		\begin{tabular}{|lcr||M|l|}
+		\begin{longtable}{|lcr||M|l|}
 			\hline 
-			\multicolumn{3}{|c||}{Identifier} &  Algorithm name & Remarks \\\hline 
+			\multicolumn{3}{|c||}{Identifier} &  Algorithm name & Remarks \\\hline \endhead
 			\hex{0000}&-&\hex{fdff}&\textit{Unallocated}&  \\\hline
 			\hex{fe00}&-&\hex{feff}&Implementation specific algorithm& \see{kd:1}\\\hline
 			\hex{ff00}&-&\hex{ffff}&Reserved for future expansion&  \\\hline 
-		\end{tabular}
+		\end{longtable}
 		\begin{enumerate}
 			\item \label{kd:1}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
 		\end{enumerate}
