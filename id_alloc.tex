@@ -20,6 +20,7 @@
 \cfoot{A-\thepage}
 \newcommand{\see}[1]{[\ref{#1}]}
 \newcommand{\hex}[1]{\texttt{0x#1}}
+\setlength\extrarowheight{3pt}
 \begin{document}
 	\newcolumntype{M}{>{\begin{varwidth}{7cm}}l<{\end{varwidth}}} %M is for Maximal column
 	\maketitle
@@ -64,7 +65,7 @@
 	``OPTIONAL'' in this document are to be interpreted as described in
 	RFC 2119.
 	\section{Hash algorithm}
-		\begin{longtable}{|lcr||M|l|}
+		\begin{longtable}{|lcr||p{7cm}|l|}
 			\hline 
 			\multicolumn{3}{|c||}{Identifier} &  Algorithm name & Remarks \\\hline \endhead
 			\hex{0000}&-&\hex{2fff}&\textit{Unallocated}&  \\\hline
@@ -88,7 +89,7 @@
 			\item \label{h:1}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
 		\end{enumerate}
 	\section{Encryption algorithm}
-		\begin{longtable}{|lcr||c|M|l|}
+		\begin{longtable}{|lcr||c|p{7cm}|l|}
 			\hline 
 			\multicolumn{3}{|c||}{Identifier} & Cipher Type & Algorithm name & Remarks \\ 
 			\hline \endhead
@@ -98,11 +99,15 @@
 			\hex{5002}&-&\hex{ae3f}&  &\textit{Unallocated}&  \\\hline 
 			\hex{ae40}&-&\hex{ae6f}& BLOCK &\textit{Reserved for AES family}&  \\\hline 
 			\hex{ae60}&-&\hex{de4f}&  &\textit{Unallocated}&  \\\hline 
-			\hex{de50}&&& BLOCK &DES& \see{en:3} \\\hline  
-			\hex{de51}&&& BLOCK &3DES& \see{en:3} \\\hline  
-			\hex{de52}&&& BLOCK &DES with gzip& \see{en:3} \\\hline  
-			\hex{de53}&&& BLOCK &3DES with gzip& \see{en:3} \\\hline  
-			\hex{de54}&-&\hex{fdff}&  &\textit{Unallocated}&  \\\hline 
+			\hex{de50}&&& BLOCK &DES, CBC mode, 56bit key& \see{en:3} \\\hline  
+			\hex{de51}&&& BLOCK &3DES, CBC mode, key option 1, 168bit key& \see{en:3} \\\hline  
+			\hex{de52}&&& BLOCK &DES, CBC mode 56bit key with gzip& \see{en:3}\see{en:4} \\\hline  
+			\hex{de53}&&& BLOCK &3DES, CBC mode, key option 1, 168bit key with gzip& \see{en:3}\see{en:4} \\\hline  
+			\hex{de54}&&& BLOCK &DES, ECB mode, 56bit key& \see{en:3} \\\hline  
+			\hex{de55}&&& BLOCK &3DES, ECB mode, key option 1, 168bit key& \see{en:3} \\\hline  
+			\hex{de56}&&& BLOCK &DES, ECB mode 56bit key with gzip& \see{en:3}\see{en:4} \\\hline  
+			\hex{de57}&&& BLOCK &3DES, ECB mode, key option 1, 168bit key with gzip& \see{en:3}\see{en:4} \\\hline
+			\hex{de58}&-&\hex{fdff}&  &\textit{Unallocated}&  \\\hline 
 			\hex{fe00}&-&\hex{feff}&  &Implementation specific algorithm& \see{en:2} \\\hline 
 			\hex{ff00}&-&\hex{ffff}&  &Reserved for future expansion&  \\\hline
 		\end{longtable} 
@@ -111,9 +116,23 @@
 			data. Implementation SHOULD provide warning for using these cipher.
 			\item \label{en:2}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
 			\item \label{en:3}Weak cipher, not recommended to be used.
+			\item \label{en:4}The payload is compressed first, then encrypt
+			
 		\end{enumerate}
+	\subsection{List of encryption mode for block cipher\cite{wiki:0001}}
+	The list here was retrieved from Wikipedia (CC BY-SA 3.0 licensed) at \url{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}
+	\begin{longtable}{l|p{7cm}}
+		Abbreviation & Name \\\hline\endhead
+		ECB & Electronic Code Book\\\hline
+		CBC & Cipher Block Chaining\\\hline
+		PCBC& Propagating Cipher Block Chaining\\\hline
+		CFB & Cipher Feedback\\\hline
+		OFB & Output Feedback\\\hline
+		CTR & Counter\\\hline
+	\end{longtable}
+	
 	\section{Key derivation algorithm}
-		\begin{longtable}{|lcr||M|l|}
+		\begin{longtable}{|lcr||p{7cm}|l|}
 			\hline 
 			\multicolumn{3}{|c||}{Identifier} &  Algorithm name & Remarks \\\hline \endhead
 			\hex{0000}&-&\hex{fdff}&\textit{Unallocated}&  \\\hline
@@ -123,4 +142,6 @@
 		\begin{enumerate}
 			\item \label{kd:1}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
 		\end{enumerate}
+	\bibliography{id_alloc}
+	\bibliographystyle{alpha}
 \end{document}
