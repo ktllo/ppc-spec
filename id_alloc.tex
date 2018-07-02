@@ -78,7 +78,20 @@
 			\hex{5003}&&&SHA256&  \\\hline
 			\hex{5004}&&&SHA384&  \\\hline
 			\hex{5005}&&&SHA512&  \\\hline
-			\hex{5005}&-&\hex{c000}&\textit{Unallocated}&  \\\hline
+			\hex{5005}&-&\hex{500f}&\textit{Unallocated}&  \\\hline
+			\hex{5010}&&&SHA3-224&  \\\hline
+			\hex{5011}&&&SHA3-256&  \\\hline
+			\hex{5012}&&&SHA3-384&  \\\hline
+			\hex{5013}&&&SHA3-512&  \\\hline
+			\hex{5013}&&&SHAKE128, 128bit output&  \\\hline
+			\hex{5014}&&&SHAKE128, 64bit output&  \\\hline
+			\hex{5015}&&&SHAKE128, 192bit output&  \\\hline
+			\hex{5016}&&&SHAKE128, 256bit output&  \\\hline
+			\hex{5017}&&&SHAKE256, 256bit output&  \\\hline
+			\hex{5018}&&&SHAKE256, 128bit output&  \\\hline
+			\hex{5019}&&&SHAKE256, 384bit output&  \\\hline
+			\hex{501a}&&&SHAKE256, 512bit output&  \\\hline
+			\hex{501b}&-&\hex{c000}&\textit{Unallocated}&  \\\hline
 			\hex{c001}&&&CRC32&  \\\hline
 			\hex{c002}&&&CRC64&  \\\hline
 			\hex{c003}&-&\hex{fdff}&\textit{Unallocated}&  \\\hline
@@ -86,7 +99,7 @@
 			\hex{ff00}&-&\hex{ffff}&Reserved for future expansion&  \\\hline 
 		\end{longtable} 
 		\begin{enumerate}
-			\item \label{h:1}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
+			\item \label{h:1}Implementations SHOULD use this block of identifiers for algorithm that does not have any identifier allocated to it.
 		\end{enumerate}
 	\section{Encryption algorithm}
 		\begin{longtable}{|lcr||c|p{7cm}|l|}
@@ -114,7 +127,7 @@
 		\begin{enumerate}
 			\item \label{en:1}Null cipher is not recommended to be used as it does not actually encrypt the
 			data. Implementation SHOULD provide warning for using these cipher.
-			\item \label{en:2}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
+			\item \label{en:2}Implementations SHOULD use this block of identifiers for algorithm that does not have any identifier allocated to it.
 			\item \label{en:3}Weak cipher, not recommended to be used.
 			\item \label{en:4}The payload is compressed first, then encrypt
 			
@@ -140,7 +153,7 @@
 			\hex{ff00}&-&\hex{ffff}&Reserved for future expansion&  \\\hline 
 		\end{longtable}
 		\begin{enumerate}
-			\item \label{kd:1}Implementations MAY use this block of identifiers for algorithm that does not have any identifier allocated to it.
+			\item \label{kd:1}Implementations SHOULD use this block of identifiers for algorithm that does not have any identifier allocated to it.
 		\end{enumerate}
 	\bibliography{id_alloc}
 	\bibliographystyle{alpha}
